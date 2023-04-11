@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { getProductById } from "../services/api";
-import { Link } from 'react-router-dom';
+import { getProductById } from '../services/api';
+import { useParams } from 'react-router-dom';
 
 const ProductDetails = ({ match }) => {
   const [product, setProduct] = useState(null);
-  const { id } = match.params;
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const data = await getProductById(id);
+      const data = await getProductById(parseInt(id));
       setProduct(data);
     };
 
     fetchProduct();
-  }, [id]); // add id to the dependency array
+  }, [id]);
 
   if (!product) {
     return <div>Loading...</div>;
@@ -25,8 +25,6 @@ const ProductDetails = ({ match }) => {
       <p>Price: {product.price}</p>
       <p>Description: {product.description}</p>
       <img src={product.image} alt={product.name} />
-      <br />
-      <Link to="/">Back to Products</Link>
     </div>
   );
 };

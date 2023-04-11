@@ -29,11 +29,11 @@ function Product(props) {
 
   return (
     <Card className={isBestProduct ? 'bestproduct' : ''}>
-      <Link to={`/product/${id}`}>
+      <Link to={`/products/${id}`}>
         <Card.Img variant="top" src={image} />
       </Link>
       <Card.Body>
-        <Link to={`/product/${id}`}>
+        <Link to={`/products/${id}`}>
           <Card.Title>{title}</Card.Title>
         </Link>
         <Card.Text>{description}</Card.Text>

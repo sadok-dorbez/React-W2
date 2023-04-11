@@ -16,7 +16,7 @@ function App() {
     <div className="App">
     <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-            <Route path='/products' Component={Products}/>
+            <Route path='/products' element={<Products/>}></Route>
             <Route path='/*' element={<NotFound />} > </Route>
             <Route path='/products/:id' element={<ProductDetails/>} > </Route>
                 
