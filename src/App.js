@@ -18,7 +18,7 @@ function App() {
         <Routes>
             <Route path='/products' Component={Products}/>
             <Route path='/*' element={<NotFound />} > </Route>
-            <Route path='/products/:id' element={<ProductDetails />} > </Route>
+            <Route path='/products/:id' element={<ProductDetails/>} > </Route>
                 
         </Routes>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getProductById } from "../services/api";
+import { Link } from 'react-router-dom';
 
 const ProductDetails = ({ match }) => {
   const [product, setProduct] = useState(null);
@@ -24,6 +25,8 @@ const ProductDetails = ({ match }) => {
       <p>Price: {product.price}</p>
       <p>Description: {product.description}</p>
       <img src={product.image} alt={product.name} />
+      <br />
+      <Link to="/">Back to Products</Link>
     </div>
   );
 };
