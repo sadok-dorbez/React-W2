@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { getProductById } from "../services/api";
 
-const ProductDetails = ({ products }) => {
+const ProductDetails = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    const selectedProduct = products.find((p) => p.id === id);
-    setProduct(selectedProduct);
-  }, [id, products]);
+    getProductById(id).then((data) => {
+        console.log(data)
+        setProduct(data);
+    });
+
+}, []);
 
   return (
     <div>
