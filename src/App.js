@@ -1,32 +1,32 @@
 import React, { Suspense, lazy } from 'react';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-
+import { Route, Routes } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar'
 //import Header from './components/Header';
 //import Loading from './components/Loading';
 
 //const Home = lazy(() => import('./pages/Home'));
 //const About = lazy(() => import('./pages/About'));
-const Products = lazy(() => import('./comoosants/Product'));
+const Products = lazy(() => import('./composants/Products'));
+const NotFound = lazy(() => import('./composants/NotFound'));
+const ProductDetails = lazy(() => import('./composants/ProductDetails'));
 
 function App() {
   return (
-    /*<Router>
-      <Header />
-      <Suspense fallback={<Loading />}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-        </Switch>
-      </Suspense>
-  </Router>*/
+    <div className="App">
+    <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+            <Route path='/products' Component={Products}/>
+            <Route path='/*' element={<NotFound />} > </Route>
+            <Route path='/products/:id' element={<ProductDetails />} > </Route>
+                
+        </Routes>
 
-  <Router>
-    <Switch>
-      <Route path="/products" component={Products}/>
-      
-    </Switch>
-    </Router>
+    </Suspense>
+
+
+
+</div>
   );
 }
 
