@@ -28,32 +28,30 @@ function Product(props) {
   const [showAlert, setShowAlert] = useState(false);
 
   return (
-    <Card className={isBestProduct ? 'bestproduct' : ''}>
-      <Link to={`/products/${id}`}>
+    <Link to={`/products/${id}`}>
+      <Card className={isBestProduct ? 'bestproduct' : ''}>
         <Card.Img variant="top" src={image} />
-      </Link>
-      <Card.Body>
-        <Link to={`/products/${id}`}>
+        <Card.Body>
           <Card.Title>{title}</Card.Title>
-        </Link>
-        <Card.Text>{description}</Card.Text>
-        <Card.Text>Quantity: {currentQuantity}</Card.Text>
-        <Button variant="primary" onClick={handleLikeClick}>
-          {likes} Likes
-        </Button>
-        <Button variant="primary" onClick={handleBuyClick} disabled={currentQuantity === 0}>
-          Buy ({currentQuantity})
-        </Button>
-      </Card.Body>
-      <Card.Footer>
-        <small className="text-muted">{price} $</small>
-      </Card.Footer>
-      {showAlert && (
-        <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
-          You bought an item!
-        </Alert>
-      )}
-    </Card>
+          <Card.Text>{description}</Card.Text>
+          <Card.Text>Quantity: {currentQuantity}</Card.Text>
+          <Button variant="primary" onClick={handleLikeClick}>
+            {likes} Likes
+          </Button>
+          <Button variant="primary" onClick={handleBuyClick} disabled={currentQuantity === 0}>
+            Buy ({currentQuantity})
+          </Button>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">{price} $</small>
+        </Card.Footer>
+        {showAlert && (
+          <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+            You bought an item!
+          </Alert>
+        )}
+      </Card>
+    </Link>
   );
 }
 
