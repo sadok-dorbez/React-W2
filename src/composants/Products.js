@@ -15,6 +15,7 @@ function Products() {
    
     const products = [
       {
+        id: 1,
         title: "Produit 1",
         description: "Description du produit 1",
         image: "https://via.placeholder.com/150",
@@ -22,6 +23,7 @@ function Products() {
         quantity: 5,
       },
       {
+        id: 2,
         title: "Produit 2",
         description: "Description du produit 2",
         image: "https://via.placeholder.com/150",
@@ -29,7 +31,16 @@ function Products() {
         quantity: 10,
       },
       {
+        id: 3,
         title: "Produit 3",
+        description: "Description du produit 3",
+        image: "https://via.placeholder.com/150",
+        price: 20,
+        quantity: 15,
+      },
+      {
+        id: 4,
+        title: "Produit 4",
         description: "Description du produit 3",
         image: "https://via.placeholder.com/150",
         price: 20,

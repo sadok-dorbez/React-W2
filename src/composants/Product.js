@@ -1,39 +1,43 @@
-import React, { useState } from "react";
-import { Card, Button, Alert } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Card, Button, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Product(props) {
-  const { title, description, image, price, quantity } = props;
+  const { id, title, description, image, price, quantity } = props;
   const [likes, setLikes] = useState(0);
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
   const [isBestProduct, setIsBestProduct] = useState(false);
 
   const handleLikeClick = () => {
     setLikes(likes + 1);
-    if (likes >= 5){
-      setIsBestProduct (true);
+    if (likes >= 5) {
+      setIsBestProduct(true);
     }
-  }
+  };
 
   const handleBuyClick = () => {
     if (currentQuantity > 0) {
       setCurrentQuantity(currentQuantity - 1);
-      setShowAlert(true); // add this line to show the Alert
+      setShowAlert(true);
       setTimeout(() => {
-        setShowAlert(false); // add this line to hide the Alert after 2 seconds
+        setShowAlert(false);
       }, 2000);
     }
   };
 
-  const [showAlert, setShowAlert] = useState(false); // add this line to initialize the state of the Alert component
-
+  const [showAlert, setShowAlert] = useState(false);
 
   return (
-    <Card  className={isBestProduct ? 'bestproduct' : ''}>
-      <Card.Img variant="top" src={image} />
+    <Card className={isBestProduct ? 'bestproduct' : ''}>
+      <Link to={`/product/${id}`}>
+        <Card.Img variant="top" src={image} />
+      </Link>
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
+        <Link to={`/product/${id}`}>
+          <Card.Title>{title}</Card.Title>
+        </Link>
         <Card.Text>{description}</Card.Text>
-        <Card.Text>Quantity:{quantity}</Card.Text>
+        <Card.Text>Quantity: {currentQuantity}</Card.Text>
         <Button variant="primary" onClick={handleLikeClick}>
           {likes} Likes
         </Button>
@@ -42,18 +46,15 @@ function Product(props) {
         </Button>
       </Card.Body>
       <Card.Footer>
-        <small className="text-muted">{price} Dt</small>
+        <small className="text-muted">{price} $</small>
       </Card.Footer>
       {showAlert && (
         <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
           You bought an item!
         </Alert>
       )}
-
     </Card>
-
   );
-
 }
 
 export default Product;
